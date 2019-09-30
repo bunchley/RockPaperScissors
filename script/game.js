@@ -7,6 +7,7 @@ const scoreboard_player = document.getElementById("playerScore");
 const result = document.querySelector(".result");
 let computerScore =0;
 let playerScore=0;
+let whoWon;
 
 function computerPlay() {
     const computerWeapon=['rock', 'paper', 'scissors'];
@@ -21,21 +22,49 @@ function playRound ( playerChoice){
     if (computerChoice === playerChoice){
         console.log("It's a tie!");
         result.innerHTML = `It's a tie between ${computerChoice}`;
+        whoWon="noone";
     }
     else if (computerChoice === "paper" && playerChoice ==="rock" || computerChoice === "rock" && playerChoice ==="scissors" || computerChoice === "scissors" && playerChoice==="paper"){
         console.log("Computer wins this round");
         result.innerHTML = `Computer's ${computerChoice} beats your ${playerChoice}!`;
-        computerScore++;
+        whoWon="computer";
     }
     else {
         console.log("You won!");
         result.innerHTML = `Your ${playerChoice} beats Computer's ${computerChoice}!`;
+        whoWon="player";
+    }
+    updateScoreboard(whoWon);
+
+
+}
+function updateScoreboard(whoWon){
+    if (whoWon === "player"){
         playerScore++;
+    }
+    else if (whoWon ==="computer"){
+        computerScore++;
     }
     scoreboard_computer.innerHTML = computerScore;
     scoreboard_player.innerHTML = playerScore;
-    return(playerScore, computerScore);
+    isGameOver(computerScore, playerScore);
+}
+function isGameOver(computer, player){
+    scoreboard_computer.innerHTML = computer;
+    scoreboard_player.innerHTML = player;
+    if(player>5){
+        alert('Game Over You Won!!!');
+        computerScore=0;
+        playerScore =0;
 
+    }
+    else if(computer>5){
+        alert('Game Over You Lost!!!');
+        computerScore=0;
+        playerScore =0;
+    }
+    scoreboard_computer.innerHTML = computerScore;
+    scoreboard_player.innerHTML = playerScore;
 }
 
 function game(){
@@ -49,9 +78,8 @@ function game(){
     scissors_weapon.addEventListener('click', function (){
         playRound("scissors");
     });
-    if(computerScore>= 5 || playerScore>=5){
-        DeviceAcceleration("game over!!!")
-    }
+
+
 }
 game();
 
