@@ -5,12 +5,32 @@ const scissors_weapon = document.getElementById("scissors");
 const scoreboard_computer = document.getElementById("computerScore");
 const scoreboard_player = document.getElementById("playerScore");
 const result = document.querySelector(".result");
+const gameEnd = document.querySelector(".game-over")
 let computerScore =0;
 let playerScore=0;
-let whoWon;
+let whoWon; 
+
+//modal
+var modal = document.querySelector(".modal");
+var trigger = document.querySelector(".trigger-help");
+var closeButton = document.querySelector(".close-button");
+
+function toggleModal() {
+    modal.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+    if (event.target === modal) {
+        toggleModal();
+    }
+}
+
+trigger.addEventListener("click", toggleModal);
+closeButton.addEventListener("click", toggleModal);
+window.addEventListener("click", windowOnClick);
 
 function computerPlay() {
-    const computerWeapon=['rock', 'paper', 'scissors'];
+    const computerWeapon=['Rock', 'Paper', 'Scissors'];
     let randomChoice=Math.floor(Math.random()*3);
     return computerWeapon[randomChoice];
 }
@@ -21,23 +41,24 @@ function playRound ( playerChoice){
     console.log('Computer Choice: ',computerChoice);
     if (computerChoice === playerChoice){
         console.log("It's a tie!");
-        result.innerHTML = `It's a tie between ${computerChoice}`;
+        result.innerHTML = `It's a ${computerChoice} tie!`;
         whoWon="noone";
     }
-    else if (computerChoice === "paper" && playerChoice ==="rock" || computerChoice === "rock" && playerChoice ==="scissors" || computerChoice === "scissors" && playerChoice==="paper"){
+    else if (computerChoice === "Paper" && playerChoice ==="Rock" || computerChoice === "Rock" && playerChoice ==="Scissors" || computerChoice === "Scissors" && playerChoice==="Paper"){
         console.log("Computer wins this round");
-        result.innerHTML = `Computer's ${computerChoice} beats your ${playerChoice}!`;
+        result.innerHTML = `Bot's ${computerChoice} beats your ${playerChoice}!`;
         whoWon="computer";
     }
     else {
         console.log("You won!");
-        result.innerHTML = `Your ${playerChoice} beats Computer's ${computerChoice}!`;
+        result.innerHTML = `Your ${playerChoice} beats Bot's ${computerChoice}!`;
         whoWon="player";
     }
     updateScoreboard(whoWon);
 
 
 }
+
 function updateScoreboard(whoWon){
     if (whoWon === "player"){
         playerScore++;
@@ -47,36 +68,30 @@ function updateScoreboard(whoWon){
     }
     scoreboard_computer.innerHTML = computerScore;
     scoreboard_player.innerHTML = playerScore;
-    isGameOver(computerScore, playerScore);
 }
 function isGameOver(computer, player){
-    scoreboard_computer.innerHTML = computer;
-    scoreboard_player.innerHTML = player;
-    if(player>5){
-        alert('Game Over You Won!!!');
-        computerScore=0;
-        playerScore =0;
+    if(player === 5){
+        gameEnd.innerHTML= 'You Win!!!'
+        gameOver=true;
 
     }
-    else if(computer>5){
-        alert('Game Over You Lost!!!');
-        computerScore=0;
-        playerScore =0;
+    else if(computer===5){
+        gameEnd.innerHTML= 'You Lose!!!'
+        gameOver=true;
     }
-    scoreboard_computer.innerHTML = computerScore;
-    scoreboard_player.innerHTML = playerScore;
+    return gameOver;
 }
 
 function game(){
     computer_weapon = computerPlay();
     rock_weapon.addEventListener('click', function() {
-        playRound( "rock");
+        playRound( "Rock");
     });
     paper_weapon.addEventListener('click', function (){
-        playRound( "paper");
+        playRound( "Paper");
     });
     scissors_weapon.addEventListener('click', function (){
-        playRound("scissors");
+        playRound("Scissors");
     });
 
 

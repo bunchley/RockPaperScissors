@@ -1,0 +1,46 @@
+
+body{
+    background-color: black;
+}
+.trigger-help {
+    font-size: 2em;
+    color:grey;
+    position: relative;
+    text-align:right;
+
+    
+}
+
+.game-title {
+        font-size: 1em;
+        color: grey;
+}
+
+.weapon {
+    font-size: 5em;
+    color: grey;
+    position:center;
+    text-align: center;
+
+}
+
+.scoreboard-container {
+    font-size: 3em;
+    color: grey;
+
+    text-align: center;
+}
+
+.scoreboard-label {
+    font-size:3em;
+    color: grey;
+    text-align: center;
+    text-anchor: end;
+    margin-top: 2em;
+}
+
+.result{
+    font-size:2em;
+    color: grey;
+    text-align: center;
+}
