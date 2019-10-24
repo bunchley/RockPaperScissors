@@ -10,27 +10,24 @@
     </head>
     <body>
 
-            <div class="trigger-help" id="help">
-                    <i class="fa fa-question" aria-hidden="true" data-toggle="modal" data-target="#helpModal"></i>
+        <div class="trigger-help" id="help">
+                <i class="fa fa-question" aria-hidden="true" data-toggle="modal" data-target="#helpModal"></i>
+        </div>
+        <div class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h1>Rock Paper Scissors</h1>
+                <h2> Select a move. Good luck</h2>
             </div>
-            <div class="modal">
-                <div class="modal-content">
-                    <span class="close-button">&times;</span>
-                    <h1>Rock Paper Scissors</h1>
-                    <h2> Select a move. Good luck</h2>
-                </div>
-            </div>
-        
-
-
-        <div id = "weapon-container">
-            <div id="rock" class="weapon">
+        </div>
+        <div class = "weapon-container">
+            <div id="rock" class="weapon" data-key="rock">
                     <i class="fa fa-hand-rock-o" aria-hidden="true">Rock</i>
             </div>
-            <div id="paper" class="weapon">
+            <div id="paper" class="weapon" data-key="paper">
                     <i class="fa fa-hand-paper-o" aria-hidden="true">Paper</i>
             </div>
-            <div id="scissors" class="weapon">
+            <div id="scissors" class="weapon" data-key="scissors">
                     <i class="fa fa-hand-scissors-o" aria-hidden="true">Scissors</i>
             </div>
         </div>
@@ -43,7 +40,14 @@
             
         </div>
         <div class = "result"></div>
-    <script src="script/game.js"></script>
+
+        <audio data-key="rock" src="sounds/tink.wav"></audio>
+        <audio data-key="paper" src="sounds/tink.wav"></audio>
+        <audio data-key="scissors" src="sounds/tink.wav"></audio>
+
+
+
+    <script src="script/game_updated.js"></script>
     </body>
 </html>
 
