@@ -5,6 +5,9 @@ const scoreboard_computer = document.getElementById("computerScore");
 const scoreboard_player = document.getElementById("playerScore");
 const result = document.querySelector(".result");
 const gameEnd = document.querySelector(".game-over");
+const playButton = document.querySelector(".play");
+const weaponDisplay = document.querySelector(".weapon-container");
+const scoreDisplay = document.querySelector(".scoreboard-container");
 let computerScore = 0;
 let playerScore = 0;
 let whoWon;
@@ -23,10 +26,22 @@ function windowOnClick(event) {
     toggleModal();
   }
 }
+function displayGame() {
+  console.log("Play button removed");
+  playButton.remove();
+  console.log("Weapons visible");
+  weaponDisplay.classList.toggle("hidden");
+  weaponDisplay.classList.toggle("visible");
+  console.log("Score Container visible");
+  scoreDisplay.classList.toggle("hidden");
+  scoreDisplay.classList.toggle("visible");
+}
 
 trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
+
+playButton.addEventListener("click", displayGame);
 
 function getComputerChoice() {
   const computerWeapon = ["Rock", "Paper", "Scissors"];

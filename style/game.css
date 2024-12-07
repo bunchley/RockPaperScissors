@@ -1,57 +1,92 @@
-
-body{
-    background-color: black;
+body {
+  background-color: black;
 }
-.trigger-help {
-    font-size: 2em;
-    color:grey;
-    position: relative;
-    text-align:right;
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    
+button {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 33%;
+  background-color: #ff6f00;
+  font-size: 3em;
+  border: none;
+  padding: 20px;
+  border-radius: 6px;
+  transition-duration: 0.3s;
+}
+.play:hover {
+  background-color: white;
+}
+
+.trigger-help {
+  font-size: 2em;
+  color: grey;
+  position: relative;
+  text-align: right;
 }
 
 .game-title {
-        font-size: 1em;
-        color: grey;
+  font-size: 4em;
+  color: rgb(135, 94, 18);
+  text-align: center;
 }
 
 .weapon {
-    font-size: 5em;
-    color: grey;
-    position:center;
-    text-align: center;
-    transition: all 0.06s ease;
-
+  font-size: 3em;
+  color: grey;
+  position: center;
+  text-align: center;
+  transition: all 0.06s ease;
+  /* visibility: hidden; */
+}
+.weapon:hover {
+  color: #ff6f00;
 }
 
 .playing {
-    transform: scale(1.1);
-    color: whitesmoke;
-  }
+  transform: scale(1.1);
+  color: whitesmoke;
+}
 
 .scoreboard-container {
-    font-size: 3em;
-    color: grey;
-    text-align: center;
+  font-size: 3em;
+  color: grey;
+  text-align: center;
 }
 
 .scoreboard-label {
-    font-size:3em;
-    color: grey;
-    text-align: center;
-    text-anchor: end;
-    margin-top: 2em;
+  /* font-size: 3em; */
+  color: grey;
+  text-align: center;
+  text-anchor: end;
+  margin-top: 20px;
+  border-top: #ff6f00;
 }
 
-.result{
-    font-size:2em;
-    color: grey;
-    text-align: center;
-    transition: all 1s ease;
+.result {
+  font-size: 2em;
+  color: grey;
+  text-align: center;
+  transition: all 1s ease;
 }
 
 .gameOver {
-    transform: scale(1.2);
-    color: whitesmoke;
-  }
+  transform: scale(1.2);
+  color: whitesmoke;
+}
+
+.visible {
+  visibility: visible;
+}
+.hidden {
+  visibility: hidden;
+}
+.player-card {
+  font-size: 2em;
+  color: grey;
+  text-align: left;
+}

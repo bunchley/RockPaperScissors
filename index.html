@@ -35,7 +35,20 @@
         </h2>
       </div>
     </div>
-    <div class="weapon-container">
+    <div class="game-title">
+      Rock Papper Scissors
+      <div class="title-content"></div>
+    </div>
+    <div class="button-container">
+      <button class="play">Play</button>
+    </div>
+    <div class="scoreboard-container hidden">
+      <div class="scoreboard-label">You v Bot</div>
+      <span id="playerScore">0</span> v
+      <span id="computerScore">0</span>
+    </div>
+    <div class="weapon-container hidden">
+      <div class="player-card">Select your move</div>
       <div id="rock" class="weapon" data-key="rock">
         <i class="fa fa-hand-rock-o" aria-hidden="true">Rock</i>
       </div>
@@ -47,11 +60,6 @@
       </div>
     </div>
     <!-- <div class="scoreboard">Scoreboard</div> -->
-    <div class="scoreboard-label">You v Bot</div>
-    <div class="scoreboard-container">
-      <span id="playerScore">0</span> v
-      <span id="computerScore">0</span>
-    </div>
     <div class="result"></div>
 
     <audio data-key="rock" src="sounds/tink.wav"></audio>
