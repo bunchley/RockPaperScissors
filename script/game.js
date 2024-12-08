@@ -6,8 +6,11 @@ const scoreboard_player = document.getElementById("playerScore");
 const result = document.querySelector(".result");
 const gameEnd = document.querySelector(".game-over");
 const playButton = document.querySelector(".play");
-const weaponDisplay = document.querySelector(".weapon-container");
+const boardDisplay = document.querySelector(".playBoard");
 const scoreDisplay = document.querySelector(".scoreboard-container");
+const computerMoveDisplay = document.getElementById("computer");
+const playerMoveDisplay = document.getElementById("player");
+
 let computerScore = 0;
 let playerScore = 0;
 let whoWon;
@@ -30,8 +33,8 @@ function displayGame() {
   console.log("Play button removed");
   playButton.remove();
   console.log("Weapons visible");
-  weaponDisplay.classList.toggle("hidden");
-  weaponDisplay.classList.toggle("visible");
+  boardDisplay.classList.toggle("hidden");
+  boardDisplay.classList.toggle("visible");
   console.log("Score Container visible");
   scoreDisplay.classList.toggle("hidden");
   scoreDisplay.classList.toggle("visible");
@@ -46,13 +49,16 @@ playButton.addEventListener("click", displayGame);
 function getComputerChoice() {
   const computerWeapon = ["Rock", "Paper", "Scissors"];
   let randomChoice = Math.floor(Math.random() * 3);
-  return computerWeapon[randomChoice];
+  var computerChoice = computerWeapon[randomChoice];
+  computerMoveDisplay.innerHTML = `${computerChoice}`;
+  return computerChoice;
 }
 
 function playRound(playerChoice, computerChoice = getComputerChoice()) {
-  //   computerChoice = getComputerChoice();
+  computerChoice = getComputerChoice();
   console.log("Player Choice: ", playerChoice);
   console.log("Computer Choice: ", computerChoice);
+  playerMoveDisplay.innerHTML = `${playerChoice}`;
   if (computerChoice === playerChoice) {
     console.log("It's a tie!");
     result.innerHTML = `It's a ${computerChoice} tie!`;
@@ -95,7 +101,7 @@ function isGameOver(computer, player) {
 }
 
 function game() {
-  computer_weapon = getComputerChoice();
+  // computer_weapon = getComputerChoice();
   rock_weapon.addEventListener("click", function () {
     playRound("Rock");
   });

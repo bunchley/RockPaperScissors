@@ -90,3 +90,26 @@ button {
   color: grey;
   text-align: left;
 }
+
+.playBoard {
+  display: flex;
+  /* flex: 1; */
+  border: 10px solid white;
+  max-width: 1200px;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.board {
+  /* border: 1rem solid white; */
+  color: grey;
+  /* font-size: 3em; */
+}
+
+#computer,
+#player,
+#v {
+  font-size: 3em;
+}
