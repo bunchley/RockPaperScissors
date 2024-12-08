@@ -7,6 +7,7 @@ const result = document.querySelector(".result");
 const gameEnd = document.querySelector(".game-over");
 const playButton = document.querySelector(".play");
 const boardDisplay = document.querySelector(".playBoard");
+const playAgainButton = document.querySelector(".play-again");
 const scoreDisplay = document.querySelector(".scoreboard-container");
 const computerMoveDisplay = document.getElementById("computer");
 const playerMoveDisplay = document.getElementById("player");
@@ -72,6 +73,8 @@ function playRound(playerChoice, computerChoice = getComputerChoice()) {
 }
 
 function updateScoreboard(whoWon) {
+  var computerScore = scoreboard_computer.innerHTML;
+  var playerScore = scoreboard_player.innerHTML;
   if (whoWon === "player") {
     playerScore++;
   } else if (whoWon === "computer") {
@@ -83,13 +86,29 @@ function updateScoreboard(whoWon) {
 }
 function isGameOver(computer, player) {
   if (player == 5 || computer == 5) {
-    boardDisplay.remove();
+    // boardDisplay.hidden = true;
+    boardDisplay.classList.toggle("hidden");
+    boardDisplay.classList.toggle("visible");
+
+    playAgainButton.classList.toggle("hidden");
+    playAgainButton.classList.toggle("visible");
     if (player == 5) {
       result.innerHTML = "You Win!!!";
     } else if (computer == 5) {
       result.innerHTML = "You Lose!!!";
     }
   }
+}
+function resetGame() {
+  playerMoveDisplay.innerHTML = "player";
+  computerMoveDisplay.innerHTML = "computer";
+  playAgainButton.classList.toggle("hidden");
+  playAgainButton.classList.toggle("visible");
+  boardDisplay.classList.toggle("visible");
+  boardDisplay.classList.toggle("hidden");
+  scoreboard_computer.innerHTML = 0;
+  scoreboard_player.innerHTML = 0;
+  result.innerHTML = "";
 }
 
 function game() {
@@ -101,6 +120,9 @@ function game() {
   });
   scissors_weapon.addEventListener("click", function () {
     playRound("Scissors");
+  });
+  playAgainButton.addEventListener("click", function () {
+    resetGame();
   });
 }
 game();

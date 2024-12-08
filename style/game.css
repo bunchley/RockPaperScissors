@@ -17,11 +17,15 @@ button {
   padding: 20px;
   border-radius: 6px;
   transition-duration: 0.3s;
+  margin-left: auto;
+  margin-right: auto;
 }
 .play:hover {
   background-color: white;
 }
-
+.play-again:hover {
+  background-color: white;
+}
 .trigger-help {
   font-size: 2em;
   color: grey;
@@ -114,4 +118,9 @@ button {
 #player,
 #v {
   font-size: 3em;
+}
+.play-again-container {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
