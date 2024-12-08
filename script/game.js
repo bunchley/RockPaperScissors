@@ -83,20 +83,16 @@ function updateScoreboard(whoWon) {
 }
 function isGameOver(computer, player) {
   if (player == 5 || computer == 5) {
-    // gameEnd.innerHTML = "You Win!!!";
     boardDisplay.remove();
-    // gameOver = true;
     if (player == 5) {
       result.innerHTML = "You Win!!!";
     } else if (computer == 5) {
       result.innerHTML = "You Lose!!!";
-      // gameOver = true;
     }
   }
 }
 
 function game() {
-  // computer_weapon = getComputerChoice();
   rock_weapon.addEventListener("click", function () {
     playRound("Rock");
   });
