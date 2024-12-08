@@ -30,12 +30,9 @@ function windowOnClick(event) {
   }
 }
 function displayGame() {
-  console.log("Play button removed");
   playButton.remove();
-  console.log("Weapons visible");
   boardDisplay.classList.toggle("hidden");
   boardDisplay.classList.toggle("visible");
-  console.log("Score Container visible");
   scoreDisplay.classList.toggle("hidden");
   scoreDisplay.classList.toggle("visible");
 }
@@ -56,11 +53,8 @@ function getComputerChoice() {
 
 function playRound(playerChoice, computerChoice = getComputerChoice()) {
   computerChoice = getComputerChoice();
-  console.log("Player Choice: ", playerChoice);
-  console.log("Computer Choice: ", computerChoice);
   playerMoveDisplay.innerHTML = `${playerChoice}`;
   if (computerChoice === playerChoice) {
-    console.log("It's a tie!");
     result.innerHTML = `It's a ${computerChoice} tie!`;
     whoWon = "noone";
   } else if (
@@ -68,11 +62,9 @@ function playRound(playerChoice, computerChoice = getComputerChoice()) {
     (computerChoice === "Rock" && playerChoice === "Scissors") ||
     (computerChoice === "Scissors" && playerChoice === "Paper")
   ) {
-    console.log("Computer wins this round");
     result.innerHTML = `Bot's ${computerChoice} beats your ${playerChoice}!`;
     whoWon = "computer";
   } else {
-    console.log("You won!");
     result.innerHTML = `Your ${playerChoice} beats Bot's ${computerChoice}!`;
     whoWon = "player";
   }
@@ -90,14 +82,17 @@ function updateScoreboard(whoWon) {
   isGameOver(computerScore, playerScore);
 }
 function isGameOver(computer, player) {
-  if (player === 5) {
-    gameEnd.innerHTML = "You Win!!!";
-    gameOver = true;
-  } else if (computer === 5) {
-    gameEnd.innerHTML = "You Lose!!!";
-    gameOver = true;
+  if (player == 5 || computer == 5) {
+    // gameEnd.innerHTML = "You Win!!!";
+    boardDisplay.remove();
+    // gameOver = true;
+    if (player == 5) {
+      result.innerHTML = "You Win!!!";
+    } else if (computer == 5) {
+      result.innerHTML = "You Lose!!!";
+      // gameOver = true;
+    }
   }
-  return gameOver;
 }
 
 function game() {
